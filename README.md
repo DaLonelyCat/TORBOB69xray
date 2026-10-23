@@ -1,47 +1,40 @@
-# THE PEOPLE VS. TORBOB69: THE MINECRAFT X-RAY TRIAL
+# TORBOB69 CHEATING EVIDENCE DOSSIER
 
-An interactive, high-production courtroom parody website presenting forensic evidence that Minecraft player **TorBob69** is utilizing unauthorized X-ray visual modifications.
+A direct, high-impact forensic evidence dossier documenting Minecraft player **TorBob69** utilizing unauthorized X-ray visual modifications and exploiting operator commands to spawn 63 Enchanted Golden Apples.
 
 - **Primary Video Evidence Tape:** [https://youtu.be/JOnVNz0psGA](https://youtu.be/JOnVNz0psGA)
-- **Target Custom Domain:** [https://torbob69xray.my.id](https://torbob69xray.my.id)
-- **Tech Architecture:** Zero-dependency vanilla HTML5, CSS3, JavaScript, Web Audio API (100% offline-ready with zero external npm dependencies).
+- **Live Custom Domain:** [https://torbob69xray.my.id](https://torbob69xray.my.id)
+- **Repository:** [https://github.com/DaLonelyCat/TORBOB69xray](https://github.com/DaLonelyCat/TORBOB69xray)
+- **Architecture:** Zero-dependency static HTML5, CSS3, and JavaScript with interactive full-screen image zoom lightbox.
 
 ---
 
-## ⚖️ Features
+## 🔍 Documented Evidence
 
-1. **Phoenix Wright Courtroom Aesthetic:**
-   - Docket header with Judge Blockhead presiding.
-   - Dramatic "OBJECTION!" button triggering an orchestral brass sting, screen shake, and full-screen comic blast.
-   - Dynamic TorBob69 avatar from `mc-heads.net` / `minotar.net`.
-   - "SUS-O-METER" gauge set to 100% guilty.
+1. **Section 1: Video Surveillance Tape (`JOnVNz0psGA`)**
+   - Embedded with YouTube IFrame API.
+   - Click-to-seek synchronization: Clicking any timestamp in the evidence ledger smoothly scrolls the video into view and jumps straight to that exact second.
 
-2. **Exhibit A Video Player with YouTube IFrame API:**
-   - Embeds surveillance tape `JOnVNz0psGA`.
-   - Clicking any timestamp in the Forensic Evidence Ledger smoothly scrolls the player into view and jumps straight to that exact second.
+2. **Section 2: Server Console Logs & 63 God Apple Seizure**
+   - **Exhibit 2-A (Inventory Inspection):** Web panel audit capturing TorBob69 holding **63 Enchanted Golden Apples** in his active survival hotbar alongside full Netherite gear.
+   - **Exhibit 2-B (Command Logs):** Server console records showing `[TorBob69: Set own game mode to Creative Mode]` multiple times.
+   - **Exhibit 2-C (Disciplinary Logs):** Console logs showing `Made TorBob69 no longer a server operator`, `Kicked TorBob69: First Warning`, and his response: `laggy ass server`.
+   - **Interactive Lightbox:** Click any screenshot to open a full-resolution zoom overlay with keyboard (`Esc`) dismissal.
 
-3. **Deep-Dive Forensic Evidence Ledger:**
-   - Filterable tabs: 90° Snaps, Ancient Debris Shafts, Suspect Chat Contradictions, Radar Trajectories.
-   - Interactive SVG Trajectory Radars illustrating Minecraft yaw/pitch angles and hidden ore distance.
-   - Side-by-side comparison of Torbob69's chat excuses vs. Forensic Prosecution reality checks.
+3. **Section 3: Timestamped Mining Telemetry (X-Ray Snaps)**
+   - Timestamped breakdown of unnatural mining turns directly into hidden ore veins.
+   - Interactive SVG trajectory radars illustrating yaw snap degrees and distance through solid deepslate stone.
+   - Direct comparison between TorBob69's chat excuses and reality.
 
-4. **Interactive Verdict Finale:**
-   - "SLAM GAVEL: DELIVER VERDICT" button.
-   - Synthesizes realistic wooden gavel thuds and iron prison gate crashes using the Web Audio API.
-   - Heavy iron bars slide down locking Torbob69 inside a holding cell.
-   - Massive red "GUILTY AS CHARGED" rubber stamp slams down with screen tremors.
-   - Reveals court sentence and quick-share buttons.
-
-5. **Pure Web Audio API Sound Synthesizer:**
-   - Zero external audio files to download or fail loading.
-   - Gavel bang, brass objection sting, metallic bars clank, and stamp thud synthesized in real-time.
-   - Sound toggle button with localStorage persistence.
+4. **Section 4: Evidence Summary & Verification**
+   - Concise itemized overview of confirmed violations.
+   - One-click copy evidence link with toast notification and social sharing.
 
 ---
 
 ## 🛠️ How to Customize Evidence & Timestamps
 
-All evidence entries are located in [`evidence.js`](file:///c:/Users/chris/Documents/antigravity/intelligent-newton/evidence.js). You can edit or add items at any time:
+All evidence entries are located in [`evidence.js`](file:///c:/Users/chris/Documents/antigravity/intelligent-newton/evidence.js):
 
 ```javascript
 {
@@ -56,7 +49,7 @@ All evidence entries are located in [`evidence.js`](file:///c:/Users/chris/Docum
   torbobQuote: "Bro I just had a hunch...",
   realityCheck: "Human eyes cannot intuition-mine through 12 deepslate blocks.",
   guiltRating: "99.8%",
-  status: "CONFIRMED SUS"
+  status: "PROVEN X-RAY"
 }
 ```
 
@@ -64,50 +57,14 @@ All evidence entries are located in [`evidence.js`](file:///c:/Users/chris/Docum
 
 ## 🚀 Local Preview
 
-Since this project has **zero dependencies**, you can view it instantly:
-
-1. Double click `index.html` to open it in any web browser.
-2. Or run a lightweight local static server in PowerShell:
-   ```powershell
-   # Python 3
-   python -m http.server 3000
-   
-   # Or Node npx
-   npx serve .
-   ```
-   Then open `http://localhost:3000`.
+Double click `index.html` to open in any web browser, or run a local static server:
+```powershell
+python -m http.server 3000
+```
+Then visit `http://localhost:3000`.
 
 ---
 
-## 🌐 Deploying to Vercel with Domain `torbob69xray.my.id`
+## 🌐 Deployment to Vercel
 
-### Option 1: Via Vercel CLI
-```bash
-# Install Vercel CLI if not already installed
-npm install -g vercel
-
-# Deploy directly from this directory
-vercel --prod
-```
-
-### Option 2: Via GitHub + Vercel Dashboard
-1. Commit and push this directory to a GitHub repository:
-   ```bash
-   git add .
-   git commit -m "feat: complete Torbob69 X-Ray courtroom evidence website"
-   git branch -M main
-   git remote add origin https://github.com/<your-username>/<your-repo-name>.git
-   git push -u origin main
-   ```
-2. Log into [Vercel](https://vercel.com) and click **"Add New Project"**.
-3. Import your repository (Vercel automatically detects static HTML projects).
-4. Click **Deploy**.
-
-### Mapping `torbob69xray.my.id` on Vercel:
-1. In your Vercel project dashboard, go to **Settings** > **Domains**.
-2. Type `torbob69xray.my.id` and click **Add**.
-3. In your DNS provider for `.my.id`, add the DNS record specified by Vercel:
-   - **Type:** `CNAME`
-   - **Name:** `@` (or subdomain)
-   - **Value:** `cname.vercel-dns.com`
-4. Once DNS propagates, Vercel will automatically provision a free SSL certificate!
+Configured via `vercel.json` for static zero-config hosting on `torbob69xray.my.id`. Push to the GitHub repository and Vercel automatically deploys the latest build!

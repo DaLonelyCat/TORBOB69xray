@@ -30,7 +30,7 @@ const EVIDENCE_DATA = [
     torbobQuote: "Bro I just had a hunch, my mining intuition was tingling.",
     realityCheck: "Human eyes cannot intuition-mine through 12 solid blocks of deepslate straight into a 7-vein of diamonds.",
     guiltRating: "99.8%",
-    status: "CONFIRMED SUS"
+    status: "PROVEN X-RAY"
   },
   {
     id: 2,
@@ -44,7 +44,7 @@ const EVIDENCE_DATA = [
     torbobQuote: "I didn't want the gravel to fall on me, obviously.",
     realityCheck: "Digs precisely 3 blocks to the left to avoid a gravel pocket he could not possibly see without transparent block textures.",
     guiltRating: "99.9%",
-    status: "EXHIBIT A+"
+    status: "VERIFIED ESP"
   },
   {
     id: 3,
@@ -58,7 +58,7 @@ const EVIDENCE_DATA = [
     torbobQuote: "Bro I literally heard the ore breathing through my studio monitor headphones.",
     realityCheck: "In Minecraft Java Edition, diamond ore produces ZERO decibels of sound. Diamonds are not lungs, Torbob.",
     guiltRating: "100.0%",
-    status: "PERJURY DETECTED"
+    status: "FALSE CLAIM"
   },
   {
     id: 4,
@@ -72,7 +72,7 @@ const EVIDENCE_DATA = [
     torbobQuote: "I always dig random staircases at Y=14 in the Nether.",
     realityCheck: "Stairs down at an exact 45° angle, hits 3 Ancient Debris, immediately stops digging stairs and heads home.",
     guiltRating: "99.7%",
-    status: "PURE XRAY"
+    status: "PROVEN NETHER ESP"
   },
   {
     id: 5,
@@ -86,7 +86,7 @@ const EVIDENCE_DATA = [
     torbobQuote: "I felt the heat coming through my monitor screen.",
     realityCheck: "Ceases mining straight forward exactly 1 block before opening a lethal lava lake. No sound cue, no visible particles.",
     guiltRating: "100.0%",
-    status: "SIXTH SENSE OR CHEAT"
+    status: "LAVA AVOIDANCE"
   },
   {
     id: 6,
@@ -100,12 +100,12 @@ const EVIDENCE_DATA = [
     torbobQuote: "The vibes in that tunnel were off, so I left.",
     realityCheck: "Leaves a 50-block untouched branch the exact second all nearby ores within 32-block ESP render range were exhausted.",
     guiltRating: "99.9%",
-    status: "CASE CLOSED"
+    status: "ESP ABANDONED"
   },
   {
     id: 7,
     time: 0,
-    timeDisplay: "EXHIBIT B",
+    timeDisplay: "LOGS",
     title: "The 63 God Apple Creative Mode Heist",
     category: "quote",
     angle: 0,
@@ -114,7 +114,7 @@ const EVIDENCE_DATA = [
     torbobQuote: "laggy ass server",
     realityCheck: "Server console logs catch TorBob69 using /gamemode creative to place 63 Enchanted Golden Apples directly into his survival hotbar.",
     guiltRating: "100.0%",
-    status: "CONFIRMED FRAUD"
+    status: "CONFIRMED EXPLOIT"
   }
 ];
 

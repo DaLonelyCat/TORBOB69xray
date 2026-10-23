@@ -1,6 +1,7 @@
 /**
- * TORBOB69 X-RAY COURTROOM APPLICATION CONTROLLER
- * ===============================================
+ * TORBOB69 CHEATING EVIDENCE CONTROLLER
+ * =====================================
+ * Handles YouTube IFrame API scrubbing, Lightbox inspection, and sharing.
  */
 
 // Global YouTube Player instance
@@ -25,8 +26,7 @@ window.onYouTubeIframeAPIReady = function() {
       modestbranding: 1
     },
     events: {
-      onReady: onPlayerReady,
-      onStateChange: onPlayerStateChange
+      onReady: onPlayerReady
     }
   });
 };
@@ -34,12 +34,8 @@ window.onYouTubeIframeAPIReady = function() {
 function onPlayerReady(event) {
   const statusEl = document.getElementById('active-evidence-label');
   if (statusEl) {
-    statusEl.textContent = 'EXHIBIT A LOADED (READY)';
+    statusEl.textContent = 'VIDEO READY • CLICK ANY BLUE TIMESTAMP BELOW TO JUMP';
   }
-}
-
-function onPlayerStateChange(event) {
-  // Can track playback time if needed
 }
 
 /**
@@ -47,13 +43,10 @@ function onPlayerStateChange(event) {
  */
 function seekToTimestamp(seconds, label) {
   if (label && label.includes('God Apple')) {
-    const logsSection = document.getElementById('exhibit-logs-section');
+    const logsSection = document.getElementById('server-logs');
     if (logsSection) {
-      logsSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      showToast('📜 REVIEWING EXHIBIT B: 63 GOD APPLE INVENTORY & LOGS');
-      if (window.courtAudio) {
-        window.courtAudio.playStampSound();
-      }
+      logsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      showToast('📜 JUMPED TO SERVER LOGS & INVENTORY INSPECTION');
       return;
     }
   }
@@ -72,18 +65,13 @@ function seekToTimestamp(seconds, label) {
   // Update active indicator
   const statusEl = document.getElementById('active-evidence-label');
   if (statusEl) {
-    statusEl.textContent = `REVIEWING: ${label} (T=${seconds}s)`;
+    statusEl.textContent = `SEEKING: ${label} (T=${seconds}s)`;
   }
 
   // Smooth scroll video into view
-  const exhibitSection = document.getElementById('exhibit-video-section');
-  if (exhibitSection) {
-    exhibitSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-
-  // Play subtle evidence audio
-  if (window.courtAudio) {
-    window.courtAudio.playStampSound();
+  const videoSection = document.getElementById('video-evidence');
+  if (videoSection) {
+    videoSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 }
 
@@ -91,7 +79,6 @@ function seekToTimestamp(seconds, label) {
  * Renders SVG Trajectory Radar for each incident card
  */
 function createRadarSvg(angleDeg, pitchDeg, distance) {
-  // Angle: 0 is North/Straight, 90 is East/Right, etc.
   const rad = ((angleDeg - 90) * Math.PI) / 180;
   const radius = 24;
   const centerX = 36;
@@ -100,7 +87,7 @@ function createRadarSvg(angleDeg, pitchDeg, distance) {
   const targetY = centerY + radius * Math.sin(rad);
 
   return `
-    <svg viewBox="0 0 72 72" class="radar-svg" width="72" height="72" style="background: #080a10; border-radius: 50%; border: 1px solid rgba(0, 229, 255, 0.3);">
+    <svg viewBox="0 0 72 72" class="radar-svg" width="72" height="72" role="img" aria-label="Mining trajectory radar: ${angleDeg} degrees turn" style="background: #06080e; border-radius: 50%; border: 1px solid rgba(0, 229, 255, 0.25);">
       <!-- Radar grid circles -->
       <circle cx="${centerX}" cy="${centerY}" r="32" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
       <circle cx="${centerX}" cy="${centerY}" r="20" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
@@ -110,18 +97,14 @@ function createRadarSvg(angleDeg, pitchDeg, distance) {
       <line x1="36" y1="4" x2="36" y2="68" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="2,2"/>
       <line x1="4" y1="36" x2="68" y2="36" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="2,2"/>
       
-      <!-- Player center orientation (facing up originally) -->
+      <!-- Player center orientation (facing straight ahead) -->
       <polygon points="36,28 32,38 36,35 40,38" fill="#ffd27d" />
       
       <!-- Suspicious turn vector line -->
-      <line x1="${centerX}" y1="${centerY}" x2="${targetX}" y2="${targetY}" stroke="#e62335" stroke-width="2" stroke-linecap="round" />
+      <line x1="${centerX}" y1="${centerY}" x2="${targetX}" y2="${targetY}" stroke="#ff4d5e" stroke-width="2" stroke-linecap="round" />
       
       <!-- Hidden ore cluster dot -->
-      <circle cx="${targetX}" cy="${targetY}" r="4" fill="#00e5ff" style="filter: drop-shadow(0 0 3px #00e5ff);" />
-      <circle cx="${targetX}" cy="${targetY}" r="6" fill="none" stroke="#00e5ff" stroke-width="1" opacity="0.6">
-        <animate attributeName="r" values="4;8;4" dur="1.5s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.8;0.1;0.8" dur="1.5s" repeatCount="indefinite"/>
-      </circle>
+      <circle cx="${targetX}" cy="${targetY}" r="4" fill="#00e5ff" />
     </svg>
   `;
 }
@@ -129,18 +112,13 @@ function createRadarSvg(angleDeg, pitchDeg, distance) {
 /**
  * Render the Evidence Cards into DOM
  */
-function renderEvidenceLedger(filter = 'all') {
+function renderEvidenceLedger() {
   const container = document.getElementById('evidence-grid-container');
   if (!container || !window.EVIDENCE_DATA) return;
 
-  const filtered = EVIDENCE_DATA.filter(item => {
-    if (filter === 'all') return true;
-    return item.category === filter;
-  });
-
-  container.innerHTML = filtered.map(item => {
+  container.innerHTML = EVIDENCE_DATA.map(item => {
     return `
-      <div class="evidence-card" data-category="${item.category}">
+      <article class="evidence-card" data-category="${item.category}">
         <div>
           <div class="evidence-card-top">
             <span class="evidence-badge">${item.status}</span>
@@ -164,37 +142,70 @@ function renderEvidenceLedger(filter = 'all') {
           
           <div class="testimony-box">
             <div class="quote-line">
-              <div class="quote-speaker">🗣️ TORBOB69'S EXCUSE:</div>
+              <div class="quote-speaker">TORBOB69'S EXCUSE:</div>
               <div class="quote-text">"${item.torbobQuote}"</div>
             </div>
             <div class="counter-line">
-              <div class="counter-speaker">⚖️ FORENSIC REALITY:</div>
+              <div class="counter-speaker">FORENSIC REALITY:</div>
               <div class="counter-text">${item.realityCheck}</div>
             </div>
           </div>
         </div>
         
         <div class="evidence-card-footer">
-          <span>GUILT CONFIDENCE</span>
+          <span>CERTAINTY</span>
           <span class="guilt-rating-pill">${item.guiltRating}</span>
         </div>
-      </div>
+      </article>
     `;
   }).join('');
 }
 
 /**
- * Filter button click handling
+ * Fullscreen Image Zoom Lightbox
  */
-function setupFilterTabs() {
-  const buttons = document.querySelectorAll('.filter-btn');
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const category = btn.getAttribute('data-filter');
-      renderEvidenceLedger(category);
+function setupImageLightbox() {
+  const modal = document.getElementById('lightbox-modal');
+  const modalImg = document.getElementById('lightbox-img');
+  const modalTitle = document.getElementById('lightbox-title');
+  const closeBtn = document.getElementById('lightbox-close');
+  const backdrop = document.getElementById('lightbox-backdrop');
+
+  if (!modal || !modalImg) return;
+
+  function openLightbox(src, title) {
+    modalImg.src = src;
+    modalTitle.textContent = title || '';
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // Attach click to all screenshot cards
+  const cards = document.querySelectorAll('.screenshot-card');
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const src = card.getAttribute('data-zoom-img');
+      const title = card.getAttribute('data-zoom-title');
+      if (src) {
+        openLightbox(src, title);
+      }
     });
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+  if (backdrop) backdrop.addEventListener('click', closeLightbox);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeLightbox();
+    }
   });
 }
 
@@ -219,139 +230,33 @@ function showToast(message) {
 }
 
 /**
- * Screen shake utility (safely checks prefers-reduced-motion)
- */
-function triggerScreenShake() {
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    return;
-  }
-  document.body.classList.remove('shake-screen');
-  requestAnimationFrame(() => {
-    document.body.classList.add('shake-screen');
-    setTimeout(() => {
-      document.body.classList.remove('shake-screen');
-    }, 450);
-  });
-}
-
-/**
- * Dramatic Phoenix Wright "OBJECTION!" Action
- */
-function triggerObjection() {
-  if (window.courtAudio) {
-    window.courtAudio.playObjectionSting();
-  }
-  triggerScreenShake();
-
-  const overlay = document.getElementById('objection-overlay');
-  if (overlay) {
-    overlay.classList.add('active');
-    setTimeout(() => {
-      overlay.classList.remove('active');
-    }, 1400);
-  }
-}
-
-/**
- * Deliver Verdict Action: Gavel Slam, Prison Bars Drop, Guilty Stamp
- */
-function deliverVerdict() {
-  const cell = document.getElementById('holding-cell');
-  if (!cell) return;
-
-  // Play gavel slam and prison bars audio
-  if (window.courtAudio) {
-    window.courtAudio.playGavelSlam();
-    setTimeout(() => {
-      window.courtAudio.playPrisonBarsSlam();
-    }, 180);
-    setTimeout(() => {
-      window.courtAudio.playStampSound();
-    }, 450);
-  }
-
-  triggerScreenShake();
-
-  // Drop prison bars and slam GUILTY stamp
-  cell.classList.add('locked');
-
-  // Change gavel button text
-  const gavelBtn = document.getElementById('btn-gavel');
-  if (gavelBtn) {
-    gavelBtn.innerHTML = '<span>⚖️</span> VERDICT RENDERED: GUILTY';
-    gavelBtn.style.background = 'linear-gradient(135deg, #383838, #1a1a1a)';
-    gavelBtn.style.borderColor = '#666';
-  }
-
-  // Scroll verdict card into center
-  cell.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  showToast('⚖️ GUILTY VERDICT OFFICIALLY ENTERED INTO THE MINECRAFT DOCKET');
-}
-
-/**
- * Audio Mute Toggle Button
- */
-function setupMuteToggle() {
-  const muteBtn = document.getElementById('btn-mute-toggle');
-  if (!muteBtn || !window.courtAudio) return;
-
-  function updateMuteUi() {
-    if (window.courtAudio.isMuted) {
-      muteBtn.innerHTML = '🔇 SOUND: OFF';
-      muteBtn.style.opacity = '0.7';
-    } else {
-      muteBtn.innerHTML = '🔊 SOUND: ON';
-      muteBtn.style.opacity = '1';
-    }
-  }
-
-  updateMuteUi();
-
-  muteBtn.addEventListener('click', () => {
-    window.courtAudio.toggleMute();
-    updateMuteUi();
-  });
-}
-
-/**
  * Share & Copy Link functions
  */
 function copySiteLink() {
   const domainUrl = 'https://torbob69xray.my.id';
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(domainUrl).then(() => {
-      showToast('📋 VERDICT DOCKET LINK COPIED TO CLIPBOARD!');
+      showToast('📋 EVIDENCE LINK COPIED TO CLIPBOARD!');
     }).catch(() => {
-      showToast('📋 VERDICT URL: ' + domainUrl);
+      showToast('📋 EVIDENCE URL: ' + domainUrl);
     });
   } else {
-    showToast('📋 VERDICT URL: ' + domainUrl);
+    showToast('📋 EVIDENCE URL: ' + domainUrl);
   }
 }
 
 function shareTwitter() {
-  const text = encodeURIComponent('THE PEOPLE VS. TORBOB69: Concrete forensic proof of Minecraft X-Raying. See the evidence docket:');
+  const text = encodeURIComponent('TORBOB69 CHEATING EVIDENCE: Video proof, server logs, and 63 God Apple inventory seizure. Full breakdown:');
   const url = encodeURIComponent('https://torbob69xray.my.id');
   window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
 }
 
 // App Initialization
 document.addEventListener('DOMContentLoaded', () => {
-  renderEvidenceLedger('all');
-  setupFilterTabs();
-  setupMuteToggle();
+  renderEvidenceLedger();
+  setupImageLightbox();
 
-  const objectionBtn = document.getElementById('btn-hero-objection');
-  if (objectionBtn) {
-    objectionBtn.addEventListener('click', triggerObjection);
-  }
-
-  const gavelBtn = document.getElementById('btn-gavel');
-  if (gavelBtn) {
-    gavelBtn.addEventListener('click', deliverVerdict);
-  }
-
-  const copyBtn = document.getElementById('btn-copy-verdict');
+  const copyBtn = document.getElementById('btn-copy-link');
   if (copyBtn) {
     copyBtn.addEventListener('click', copySiteLink);
   }
