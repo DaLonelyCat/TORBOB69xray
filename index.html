@@ -45,14 +45,13 @@
     <div class="nav-links">
       <a href="#video-evidence" class="nav-pill">Video Footage</a>
       <a href="#server-logs" class="nav-pill">Server Logs</a>
-      <a href="#mining-telemetry" class="nav-pill">Mining Telemetry</a>
     </div>
   </nav>
 
   <!-- MAIN CONTAINER -->
   <main class="container">
 
-    <!-- CLEAN HIGH-IMPACT HERO -->
+    <!-- HERO PROFILE -->
     <header class="evidence-hero">
       <div class="player-profile-card">
         <div class="avatar-wrap">
@@ -101,13 +100,6 @@
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
             allowfullscreen>
           </iframe>
-        </div>
-      </div>
-
-      <div class="video-status-strip">
-        <div class="status-left">
-          <span>ACTIVE EVIDENCE: </span>
-          <span id="active-evidence-label" class="active-indicator">READY &bull; CLICK ANY TIMESTAMP BELOW TO JUMP</span>
         </div>
       </div>
     </section>
@@ -184,31 +176,22 @@
       </div>
     </section>
 
-    <!-- SECTION 3: TIMESTAMPED MINING TELEMETRY (X-RAY SNAPS) -->
-    <section class="evidence-section" id="mining-telemetry">
-      <div class="section-header">
-        <div class="section-title-wrap">
-          <span class="section-num">03</span>
-          <h2 class="section-title">Timestamped Video Breakdown & Turn Telemetry</h2>
+    <!-- FOOTER WITH PHOTOS (WITHOUT DESCRIPTION) & SHARE -->
+    <footer class="evidence-footer">
+      <div class="footer-gallery">
+        <div class="footer-photo-card" data-zoom-img="torbob-irl-1.png">
+          <img src="torbob-irl-1.png" alt="TorBob evidence photograph" class="footer-photo" loading="lazy">
         </div>
-        <div class="section-meta">CLICK ANY BLUE TIMESTAMP TO SEEK VIDEO</div>
+        <div class="footer-photo-card" data-zoom-img="torbob-irl-2.png">
+          <img src="torbob-irl-2.png" alt="TorBob evidence photograph" class="footer-photo" loading="lazy">
+        </div>
+        <div class="footer-photo-card" data-zoom-img="torbob-irl-3.png">
+          <img src="torbob-irl-3.png" alt="TorBob evidence photograph" class="footer-photo" loading="lazy">
+        </div>
+        <div class="footer-photo-card" data-zoom-img="torbob-irl-4.png">
+          <img src="torbob-irl-4.png" alt="TorBob evidence photograph" class="footer-photo" loading="lazy">
+        </div>
       </div>
-
-      <!-- CARDS CONTAINER (RENDERED VIA APP.JS) -->
-      <div class="evidence-grid" id="evidence-grid-container">
-        <!-- Dynamically rendered -->
-      </div>
-    </section>
-
-    <!-- SECTION 4: EVIDENCE SUMMARY & SHARE -->
-    <section class="summary-section">
-      <h2 class="summary-title">EVIDENCE SUMMARY & VERIFICATION</h2>
-      <ul class="summary-list">
-        <li><strong>X-Ray Mining Trajectory:</strong> Player repeatedly makes abrupt 90° turn snaps through solid deepslate stone directly into diamond ore veins without torch illumination.</li>
-        <li><strong>Unauthorized Creative Mode:</strong> Server console confirms TorBob69 issued <code>/gamemode creative</code> commands to bypass survival mechanics.</li>
-        <li><strong>63 Enchanted Golden Apples:</strong> Server inventory audit seized a stack of 63 God Apples in survival hotbar—statistically impossible without creative commands.</li>
-        <li><strong>Disciplinary Record:</strong> Player operator privileges were permanently revoked and player was kicked from the server.</li>
-      </ul>
 
       <div class="share-actions-row">
         <button class="btn-primary" id="btn-copy-link">
@@ -218,15 +201,12 @@
           🐦 SHARE ON X / TWITTER
         </button>
       </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer class="evidence-footer">
-      <p>
+      <p class="footer-credits">
         Evidence Dossier Archive &bull; Domain: <a href="https://torbob69xray.my.id" target="_blank" rel="noopener">torbob69xray.my.id</a>
       </p>
-      <p style="margin-top: 6px; font-size: 0.8rem; color: #8892a4;">
-        Video footage source: <a href="https://youtu.be/JOnVNz0psGA" target="_blank" rel="noopener">YouTube: JOnVNz0psGA</a>.
+      <p class="footer-source">
+        Video footage source: <a href="https://youtu.be/JOnVNz0psGA" target="_blank" rel="noopener">YouTube: JOnVNz0psGA</a>
       </p>
     </footer>
 
@@ -246,7 +226,6 @@
   <div class="toast-popup" id="court-toast" role="status" aria-live="polite"></div>
 
   <!-- SCRIPTS -->
-  <script src="evidence.js"></script>
   <script src="app.js"></script>
 
 </body>
