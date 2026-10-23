@@ -446,6 +446,104 @@ body {
   font-weight: 700;
 }
 
+/* EXHIBIT B: SCREENSHOTS & SERVER LOGS */
+.exhibit-intro {
+  color: var(--text-muted);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+.exhibit-intro strong {
+  color: var(--text-gold);
+}
+
+.exhibit-intro code {
+  background: rgba(255, 92, 109, 0.12);
+  color: #ff8594;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+}
+
+.screenshots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 20px;
+}
+
+.screenshot-card {
+  background: #0e111a;
+  border: 1px solid rgba(201, 147, 62, 0.25);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+}
+
+.screenshot-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-gold);
+}
+
+.screenshot-label {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--text-gold);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.screenshot-img-wrap {
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #07090e;
+  margin-bottom: 12px;
+}
+
+.screenshot-img-wrap a {
+  display: block;
+}
+
+.screenshot-img-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: opacity 0.2s;
+}
+
+.screenshot-img-wrap a:hover img {
+  opacity: 0.9;
+}
+
+.screenshot-caption {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #cbd3e2;
+}
+
+.screenshot-caption code {
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.4);
+  color: #ff8594;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+
+.screenshot-caption strong {
+  color: #fff;
+}
+
 /* FORENSIC EVIDENCE LEDGER */
 .ledger-section {
   margin-bottom: 60px;

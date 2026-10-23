@@ -101,6 +101,20 @@ const EVIDENCE_DATA = [
     realityCheck: "Leaves a 50-block untouched branch the exact second all nearby ores within 32-block ESP render range were exhausted.",
     guiltRating: "99.9%",
     status: "CASE CLOSED"
+  },
+  {
+    id: 7,
+    time: 0,
+    timeDisplay: "EXHIBIT B",
+    title: "The 63 God Apple Creative Mode Heist",
+    category: "quote",
+    angle: 0,
+    pitch: 0,
+    distance: "Creative Tab",
+    torbobQuote: "laggy ass server",
+    realityCheck: "Server console logs catch TorBob69 using /gamemode creative to place 63 Enchanted Golden Apples directly into his survival hotbar.",
+    guiltRating: "100.0%",
+    status: "CONFIRMED FRAUD"
   }
 ];
 

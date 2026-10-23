@@ -46,6 +46,18 @@ function onPlayerStateChange(event) {
  * Jump YouTube video to specific second and scroll into view
  */
 function seekToTimestamp(seconds, label) {
+  if (label && label.includes('God Apple')) {
+    const logsSection = document.getElementById('exhibit-logs-section');
+    if (logsSection) {
+      logsSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      showToast('📜 REVIEWING EXHIBIT B: 63 GOD APPLE INVENTORY & LOGS');
+      if (window.courtAudio) {
+        window.courtAudio.playStampSound();
+      }
+      return;
+    }
+  }
+
   if (ytPlayer && typeof ytPlayer.seekTo === 'function') {
     ytPlayer.seekTo(seconds, true);
     ytPlayer.playVideo();
