@@ -39,7 +39,7 @@
   <!-- TOP COURT STATUS BAR -->
   <header class="top-banner">
     <div class="court-status">
-      <span class="blink-dot"></span>
+      <span class="court-seal-icon" aria-hidden="true">⚖️</span>
       <span>SUPREME COURT OF THE MINECRAFT REALM &bull; SESSION IN PROGRESS</span>
     </div>
     <div class="top-actions">
@@ -57,8 +57,8 @@
 
     <!-- HERO HEADER -->
     <section class="court-header">
-      <div class="court-docket-badge">
-        DOCKET NO. 69-XRAY &bull; THE HON. JUDGE BLOCKHEAD PRESIDING
+      <div class="court-masthead-folio">
+        <span>DOCKET NO. 69-XRAY</span> &bull; <span>MINECRAFT ARBITRATION TRIBUNAL</span> &bull; <span>JUDGE BLOCKHEAD PRESIDING</span>
       </div>
       <h1 class="court-title">THE PEOPLE VS. TORBOB69</h1>
       <h2 class="court-subtitle">OFFICIAL INDICTMENT: UNLAWFUL USE OF X-RAY MODIFICATIONS</h2>
@@ -111,7 +111,7 @@
           </div>
           <div class="stat-item">
             <div class="stat-label">EXCUSE PLAUSIBILITY</div>
-            <div class="stat-val" style="color: var(--crimson-red);">0.00% (PERJURY)</div>
+            <div class="stat-val" style="color: #ff8594;">0.00% (PERJURY)</div>
           </div>
         </div>
       </div>
@@ -126,13 +126,8 @@
     <!-- EXHIBIT A: VIDEO PLAYER -->
     <section class="exhibit-section" id="exhibit-video-section">
       <div class="exhibit-header">
-        <div class="exhibit-title-wrap">
-          <span class="exhibit-tag">EXHIBIT A</span>
-          <h2 class="exhibit-heading">PRIMARY COURTROOM SURVEILLANCE TAPE</h2>
-        </div>
-        <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-gold);">
-          CASE ID: #JOnVNz0psGA
-        </div>
+        <h2 class="exhibit-heading"><span class="exhibit-roman">Exhibit A:</span> Primary Courtroom Surveillance Tape</h2>
+        <div class="exhibit-meta">CASE RECORDING #JOnVNz0psGA</div>
       </div>
 
       <div class="video-container-bezel">
@@ -221,7 +216,7 @@
       </div>
 
       <!-- SENTENCE REVEAL -->
-      <div class="sentence-announcement" id="sentence-announcement">
+      <div class="sentence-announcement" id="sentence-announcement" role="status" aria-live="polite">
         <div class="sentence-card">
           <div class="sentence-heading">OFFICIAL COURT SENTENCE</div>
           <div class="sentence-punishment">
@@ -238,6 +233,9 @@
         </div>
       </div>
     </section>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div class="court-toast" id="court-toast" role="status" aria-live="polite"></div>
 
     <!-- FOOTER -->
     <footer class="court-footer">

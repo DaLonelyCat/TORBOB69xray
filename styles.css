@@ -41,8 +41,10 @@ body {
 }
 
 /* Screen shake effect on Objections and Gavel Slams */
-.shake-screen {
-  animation: courtroomTremor 0.4s cubic-bezier(.36,.07,.19,.97) both;
+@media (prefers-reduced-motion: no-preference) {
+  .shake-screen {
+    animation: courtroomTremor 0.4s cubic-bezier(.36,.07,.19,.97) both;
+  }
 }
 
 @keyframes courtroomTremor {
@@ -54,7 +56,7 @@ body {
 
 /* TOP STATUS BAR */
 .top-banner {
-  background: linear-gradient(90deg, #1f0b0e, #2b1408, #1f0b0e);
+  background: linear-gradient(90deg, #18090b, #221006, #18090b);
   border-bottom: 2px solid var(--border-gold);
   padding: 8px 16px;
   display: flex;
@@ -66,7 +68,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.6);
 }
 
 .court-status {
@@ -77,18 +79,10 @@ body {
   color: var(--text-gold);
 }
 
-.blink-dot {
-  width: 10px;
-  height: 10px;
-  background-color: var(--crimson-red);
-  border-radius: 50%;
-  box-shadow: 0 0 10px var(--crimson-red);
-  animation: pulseBlink 1.2s infinite;
-}
-
-@keyframes pulseBlink {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.3; transform: scale(0.85); }
+.court-seal-icon {
+  font-size: 1rem;
+  display: inline-block;
+  line-height: 1;
 }
 
 .top-actions {
@@ -101,10 +95,11 @@ body {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #fff;
-  padding: 4px 12px;
+  padding: 6px 14px;
+  min-height: 36px;
   border-radius: 20px;
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   transition: all 0.2s;
   display: inline-flex;
   align-items: center;
@@ -129,21 +124,23 @@ body {
 .court-header {
   text-align: center;
   margin-bottom: 36px;
-  padding: 30px 20px 20px;
+  padding: 24px 20px 20px;
   position: relative;
 }
 
-.court-docket-badge {
-  display: inline-block;
-  background: rgba(201, 147, 62, 0.15);
-  border: 1px solid var(--border-gold);
+.court-masthead-folio {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid rgba(201, 147, 62, 0.4);
+  border-bottom: 1px solid rgba(201, 147, 62, 0.4);
   color: var(--text-gold);
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   letter-spacing: 2px;
-  padding: 4px 14px;
-  border-radius: 4px;
-  margin-bottom: 14px;
+  padding: 6px 18px;
+  margin-bottom: 18px;
+  text-transform: uppercase;
 }
 
 .court-title {
@@ -153,17 +150,17 @@ body {
   letter-spacing: 1.5px;
   color: #ffffff;
   text-transform: uppercase;
-  text-shadow: 0 4px 16px rgba(0,0,0,0.8), 0 0 25px rgba(201, 147, 62, 0.3);
+  text-shadow: 0 4px 16px rgba(0,0,0,0.9);
   margin-bottom: 8px;
 }
 
 .court-subtitle {
-  color: var(--crimson-red);
+  color: #ff5c6d;
   font-weight: 800;
-  font-size: clamp(1.1rem, 2.8vw, 1.6rem);
+  font-size: clamp(1.1rem, 2.8vw, 1.55rem);
   text-transform: uppercase;
   letter-spacing: 3px;
-  text-shadow: 0 0 15px var(--crimson-glow);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
   margin-bottom: 14px;
 }
 
@@ -191,10 +188,11 @@ body {
   font-size: 1.15rem;
   letter-spacing: 2px;
   padding: 12px 28px;
+  min-height: 48px;
   border-radius: 6px;
   cursor: pointer;
   text-transform: uppercase;
-  box-shadow: 0 6px 20px rgba(230, 35, 53, 0.4), inset 0 1px 0 rgba(255,255,255,0.4);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.3);
   transition: transform 0.15s, box-shadow 0.15s;
   display: inline-flex;
   align-items: center;
@@ -202,23 +200,24 @@ body {
 }
 
 .btn-objection:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 26px rgba(230, 35, 53, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
 }
 
 .btn-verdict-jump {
-  background: linear-gradient(135deg, #c9933e, #825b17);
-  border: 2px solid #ffd27d;
-  color: #fff;
-  font-weight: 800;
+  background: linear-gradient(135deg, #ffd782, #dca442);
+  border: 2px solid #ffe8b3;
+  color: #1a1208;
+  font-weight: 900;
   font-size: 1.05rem;
   letter-spacing: 1px;
   padding: 12px 26px;
+  min-height: 48px;
   border-radius: 6px;
   cursor: pointer;
   text-transform: uppercase;
   text-decoration: none;
-  box-shadow: 0 6px 20px rgba(201, 147, 62, 0.35);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
   transition: transform 0.15s, box-shadow 0.15s;
   display: inline-flex;
   align-items: center;
@@ -227,7 +226,7 @@ body {
 
 .btn-verdict-jump:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(201, 147, 62, 0.55);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55);
 }
 
 /* SUSPECT DOSSIER & PROFILE */
@@ -251,9 +250,9 @@ body {
   position: absolute;
   right: -30px;
   top: 25px;
-  background: rgba(230, 35, 53, 0.15);
-  border: 1px solid var(--crimson-red);
-  color: var(--crimson-red);
+  background: rgba(255, 92, 109, 0.12);
+  border: 1px solid rgba(255, 133, 148, 0.35);
+  color: #ff8594;
   font-family: var(--font-mono);
   font-weight: 800;
   font-size: 0.75rem;
@@ -293,12 +292,12 @@ body {
 }
 
 .suspect-tag {
-  background: rgba(230, 35, 53, 0.2);
-  border: 1px solid var(--crimson-red);
-  color: var(--crimson-red);
+  background: rgba(255, 92, 109, 0.14);
+  border: 1px solid rgba(255, 133, 148, 0.35);
+  color: #ff8594;
   font-size: 0.75rem;
   font-weight: 700;
-  padding: 2px 8px;
+  padding: 3px 10px;
   border-radius: 4px;
   letter-spacing: 1px;
 }
@@ -312,22 +311,22 @@ body {
 
 .suspect-stats {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   flex-wrap: wrap;
   margin-top: 10px;
 }
 
 .stat-item {
   background: rgba(255, 255, 255, 0.04);
-  padding: 6px 12px;
+  padding: 8px 14px;
   border-radius: 6px;
-  border-left: 3px solid var(--border-gold);
+  border: 1px solid rgba(201, 147, 62, 0.25);
 }
 
 .stat-label {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: #aeb6c7;
   letter-spacing: 1px;
 }
 
@@ -360,14 +359,14 @@ body {
   font-family: var(--font-mono);
   font-size: 2.2rem;
   font-weight: 900;
-  color: var(--crimson-red);
-  text-shadow: 0 0 12px var(--crimson-glow);
+  color: #ff5c6d;
+  text-shadow: 0 3px 12px rgba(0,0,0,0.8);
 }
 
 .meter-status {
   font-size: 0.75rem;
   font-weight: 700;
-  color: #ff99a4;
+  color: #ff8594;
   letter-spacing: 1px;
 }
 
@@ -392,26 +391,23 @@ body {
   gap: 10px;
 }
 
-.exhibit-title-wrap {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.exhibit-tag {
-  background: var(--crimson-red);
-  color: #fff;
-  font-weight: 900;
-  font-size: 0.85rem;
-  padding: 4px 10px;
-  border-radius: 4px;
-  letter-spacing: 1.5px;
-}
-
 .exhibit-heading {
   font-size: 1.3rem;
   color: #fff;
   font-family: var(--font-court);
+  letter-spacing: 0.5px;
+}
+
+.exhibit-roman {
+  color: var(--text-gold);
+  font-weight: 900;
+  margin-right: 6px;
+}
+
+.exhibit-meta {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-gold);
 }
 
 .video-container-bezel {
@@ -541,9 +537,9 @@ body {
   font-weight: 800;
   padding: 3px 8px;
   border-radius: 4px;
-  background: rgba(230, 35, 53, 0.15);
-  color: var(--crimson-red);
-  border: 1px solid rgba(230, 35, 53, 0.3);
+  background: rgba(255, 92, 109, 0.12);
+  color: #ff8594;
+  border: 1px solid rgba(255, 133, 148, 0.35);
 }
 
 .timestamp-btn {
@@ -553,19 +549,20 @@ body {
   font-family: var(--font-mono);
   font-size: 0.85rem;
   font-weight: 700;
-  padding: 4px 10px;
+  padding: 8px 14px;
+  min-height: 44px;
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: background 0.15s, color 0.15s, transform 0.15s;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .timestamp-btn:hover {
   background: var(--diamond-blue);
-  color: #000;
-  box-shadow: 0 0 12px var(--diamond-glow);
+  color: #0b0e14;
+  transform: translateY(-1px);
 }
 
 .evidence-card-title {
@@ -597,7 +594,7 @@ body {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   line-height: 1.5;
-  color: var(--text-muted);
+  color: #aeb6c7;
 }
 
 .telemetry-val {
@@ -615,14 +612,16 @@ body {
 }
 
 .quote-line {
-  margin-bottom: 8px;
-  padding-left: 10px;
-  border-left: 3px solid var(--crimson-red);
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  background: rgba(230, 35, 53, 0.08);
+  border: 1px solid rgba(230, 35, 53, 0.2);
+  border-radius: 4px;
 }
 
 .quote-speaker {
   font-weight: 800;
-  color: #ff8591;
+  color: #ff8594;
   font-size: 0.75rem;
   text-transform: uppercase;
   margin-bottom: 2px;
@@ -630,12 +629,14 @@ body {
 
 .quote-text {
   font-style: italic;
-  color: #ddd;
+  color: #eee;
 }
 
 .counter-line {
-  padding-left: 10px;
-  border-left: 3px solid var(--border-gold);
+  padding: 8px 12px;
+  background: rgba(201, 147, 62, 0.08);
+  border: 1px solid rgba(201, 147, 62, 0.2);
+  border-radius: 4px;
 }
 
 .counter-speaker {
@@ -647,7 +648,7 @@ body {
 }
 
 .counter-text {
-  color: #cbd3e2;
+  color: #dbe0ea;
 }
 
 /* CARD BOTTOM FOOTER */
@@ -661,7 +662,10 @@ body {
 }
 
 .guilt-rating-pill {
-  color: var(--crimson-red);
+  color: #ff5c6d;
+  font-family: var(--font-mono);
+  font-weight: 800;
+}
   font-family: var(--font-mono);
   font-weight: 800;
 }
@@ -725,7 +729,7 @@ body {
   justify-content: space-evenly;
   pointer-events: none;
   transform: translateY(-105%);
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 10;
 }
 
@@ -761,10 +765,10 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(3) rotate(-15deg);
+  transform: translate(-50%, -50%) scale(2) rotate(-15deg);
   opacity: 0;
   pointer-events: none;
-  border: 8px solid var(--crimson-red);
+  border: 6px solid var(--crimson-red);
   color: var(--crimson-red);
   font-family: var(--font-court);
   font-size: 2.2rem;
@@ -773,10 +777,9 @@ body {
   padding: 10px 24px;
   text-transform: uppercase;
   border-radius: 8px;
-  text-shadow: 0 0 15px var(--crimson-glow);
-  box-shadow: inset 0 0 15px var(--crimson-glow), 0 0 25px rgba(230, 35, 53, 0.6);
+  box-shadow: inset 0 0 0 2px rgba(230, 35, 53, 0.5), 0 8px 24px rgba(0,0,0,0.7);
   z-index: 20;
-  transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
 }
 
 .holding-cell.locked .guilty-stamp {
@@ -794,19 +797,20 @@ body {
   font-weight: 900;
   letter-spacing: 2px;
   padding: 18px 42px;
+  min-height: 54px;
   border-radius: 10px;
   cursor: pointer;
   text-transform: uppercase;
-  box-shadow: 0 8px 30px rgba(230, 35, 53, 0.5), inset 0 2px 0 rgba(255,255,255,0.4);
-  transition: all 0.2s;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.6), inset 0 2px 0 rgba(255,255,255,0.3);
+  transition: transform 0.15s, box-shadow 0.15s;
   display: inline-flex;
   align-items: center;
   gap: 12px;
 }
 
 .btn-gavel-verdict:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 12px 40px rgba(230, 35, 53, 0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.7);
 }
 
 .btn-gavel-verdict:active {
@@ -817,7 +821,7 @@ body {
 .sentence-announcement {
   margin-top: 30px;
   display: none;
-  animation: fadeIn 0.5s ease-in-out forwards;
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .holding-cell.locked ~ .sentence-announcement {
@@ -828,13 +832,13 @@ body {
   max-width: 650px;
   margin: 0 auto;
   background: rgba(230, 35, 53, 0.1);
-  border: 2px dashed var(--crimson-red);
+  border: 2px dashed #ff5c6d;
   padding: 20px;
   border-radius: 8px;
 }
 
 .sentence-heading {
-  color: var(--crimson-red);
+  color: #ff5c6d;
   font-weight: 900;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -880,26 +884,26 @@ body {
 .objection-bubble {
   position: relative;
   text-align: center;
-  transform: scale(0.2) rotate(-8deg);
-  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: scale(0.6) rotate(-4deg);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .objection-overlay.active .objection-bubble {
-  transform: scale(1.1) rotate(0deg);
+  transform: scale(1) rotate(0deg);
 }
 
 .objection-text {
   font-family: var(--font-court);
-  font-size: clamp(3rem, 12vw, 8rem);
+  font-size: clamp(3rem, 12vw, 7.5rem);
   font-weight: 900;
   font-style: italic;
   color: #ffea00;
   text-shadow: 
-    -4px -4px 0 #e60000, 
-    4px -4px 0 #e60000, 
-    -4px 4px 0 #e60000, 
-    4px 4px 0 #e60000,
-    0 0 35px rgba(255, 0, 0, 0.9);
+    -4px -4px 0 #b30000, 
+    4px -4px 0 #b30000, 
+    -4px 4px 0 #b30000, 
+    4px 4px 0 #b30000,
+    0 8px 25px rgba(0,0,0,0.85);
   letter-spacing: 4px;
   text-transform: uppercase;
   user-select: none;
@@ -915,14 +919,83 @@ body {
   text-shadow: 0 2px 10px #000;
 }
 
+/* IN-PAGE GOLDEN TOAST NOTIFICATION */
+.court-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #151824;
+  border: 2px solid var(--border-gold);
+  color: var(--text-gold);
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 700;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.7);
+  z-index: 10000;
+  transform: translateY(80px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+}
+
+.court-toast.visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
 /* FOOTER */
 .court-footer {
   text-align: center;
   margin-top: 60px;
   padding: 30px 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  color: var(--text-muted);
-  font-size: 0.85rem;
+  color: #aeb6c7;
+  font-size: 0.88rem;
+}
+
+.court-footer p:nth-child(2) {
+  margin-top: 6px;
+  font-size: 0.82rem;
+  color: #aeb6c7;
+}
+
+.court-footer a {
+  color: var(--text-gold);
+  text-decoration: none;
+}
+
+.court-footer a:hover {
+  text-decoration: underline;
+}
+
+/* INTENTIONAL ACCESSIBILITY: PREFERS REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+  .shake-screen {
+    animation: none !important;
+  }
+  .prison-bars {
+    transition: opacity 0.25s ease-out !important;
+    transform: translateY(0) !important;
+    opacity: 0;
+  }
+  .holding-cell.locked .prison-bars {
+    opacity: 1;
+  }
+  .guilty-stamp {
+    transition: opacity 0.25s ease-out !important;
+    transform: translate(-50%, -50%) scale(1) rotate(-12deg) !important;
+  }
+  .objection-bubble {
+    transition: opacity 0.2s ease-out !important;
+    transform: scale(1) rotate(0deg) !important;
+  }
+  .court-toast {
+    transition: opacity 0.2s ease-out !important;
+    transform: translateY(0) !important;
+  }
 }
 
 .court-footer a {

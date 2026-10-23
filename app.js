@@ -187,16 +187,39 @@ function setupFilterTabs() {
 }
 
 /**
- * Screen shake utility
+ * Toast Notification System
+ */
+let toastTimeout = null;
+function showToast(message) {
+  const toast = document.getElementById('court-toast');
+  if (!toast) return;
+
+  toast.textContent = message;
+  toast.classList.add('visible');
+
+  if (toastTimeout) {
+    clearTimeout(toastTimeout);
+  }
+
+  toastTimeout = setTimeout(() => {
+    toast.classList.remove('visible');
+  }, 3200);
+}
+
+/**
+ * Screen shake utility (safely checks prefers-reduced-motion)
  */
 function triggerScreenShake() {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
+  }
   document.body.classList.remove('shake-screen');
-  // Trigger reflow
-  void document.body.offsetWidth;
-  document.body.classList.add('shake-screen');
-  setTimeout(() => {
-    document.body.classList.remove('shake-screen');
-  }, 450);
+  requestAnimationFrame(() => {
+    document.body.classList.add('shake-screen');
+    setTimeout(() => {
+      document.body.classList.remove('shake-screen');
+    }, 450);
+  });
 }
 
 /**
@@ -250,6 +273,7 @@ function deliverVerdict() {
 
   // Scroll verdict card into center
   cell.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  showToast('⚖️ GUILTY VERDICT OFFICIALLY ENTERED INTO THE MINECRAFT DOCKET');
 }
 
 /**
@@ -282,11 +306,15 @@ function setupMuteToggle() {
  */
 function copySiteLink() {
   const domainUrl = 'https://torbob69xray.my.id';
-  navigator.clipboard.writeText(domainUrl).then(() => {
-    alert('Verdict link copied to clipboard: ' + domainUrl);
-  }).catch(() => {
-    prompt('Copy this verdict URL:', domainUrl);
-  });
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(domainUrl).then(() => {
+      showToast('📋 VERDICT DOCKET LINK COPIED TO CLIPBOARD!');
+    }).catch(() => {
+      showToast('📋 VERDICT URL: ' + domainUrl);
+    });
+  } else {
+    showToast('📋 VERDICT URL: ' + domainUrl);
+  }
 }
 
 function shareTwitter() {
