@@ -20,9 +20,9 @@ A direct, high-impact forensic evidence dossier documenting Minecraft player **T
    - **Exhibit 2-C (Disciplinary Logs):** Console logs showing `Made TorBob69 no longer a server operator`, `Kicked TorBob69: First Warning`, and his response: `laggy ass server`.
    - **Interactive Lightbox:** Click any screenshot to open a full-resolution zoom overlay with keyboard (`Esc`) dismissal.
 
-3. **Footer Gallery & Sharing**
-   - Photographic exhibits with full-resolution darkroom lightbox preview.
-   - One-click copy evidence link with toast notification and social sharing.
+3. **Section 3: Photographic Evidence Widgets**
+   - 4 structured media widgets with dark glass framing and hover elevation.
+   - Interactive Lightbox with Left / Right arrow navigation (touch, click, and arrow keys).
 
 ---
 

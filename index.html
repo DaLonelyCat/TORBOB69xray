@@ -45,6 +45,7 @@
     <div class="nav-links">
       <a href="#video-evidence" class="nav-pill">Video Footage</a>
       <a href="#server-logs" class="nav-pill">Server Logs</a>
+      <a href="#photo-widgets" class="nav-pill">Photographs</a>
     </div>
   </nav>
 
@@ -89,7 +90,7 @@
           <span class="section-num">01</span>
           <h2 class="section-title">Video Footage: Suspicious Mining Behavior</h2>
         </div>
-        <div class="section-meta">SOURCE: YOUTUBE &bull; JOnVNz0psGA</div>
+        <div class="section-meta">OFFICIAL SURVEILLANCE RECORDING</div>
       </div>
 
       <div class="video-container-bezel">
@@ -176,48 +177,83 @@
       </div>
     </section>
 
-    <!-- FOOTER WITH PHOTOS (WITHOUT DESCRIPTION) & SHARE -->
+    <!-- SECTION 3: PHOTOGRAPHIC EVIDENCE WIDGETS -->
+    <section class="evidence-section" id="photo-widgets">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-num">03</span>
+          <h2 class="section-title">Photographic Evidence</h2>
+        </div>
+        <div class="section-meta">4 MEDIA WIDGETS</div>
+      </div>
+
+      <div class="widgets-grid">
+        <!-- Widget 1 -->
+        <article class="photo-widget" data-zoom-img="torbob-irl-1.png">
+          <div class="widget-topbar">
+            <span class="widget-tag">WIDGET 01</span>
+            <span class="widget-zoom-action">Inspect ↗</span>
+          </div>
+          <div class="widget-frame">
+            <img src="torbob-irl-1.png" alt="TorBob photographic record" class="widget-img" loading="lazy">
+          </div>
+        </article>
+
+        <!-- Widget 2 -->
+        <article class="photo-widget" data-zoom-img="torbob-irl-2.png">
+          <div class="widget-topbar">
+            <span class="widget-tag">WIDGET 02</span>
+            <span class="widget-zoom-action">Inspect ↗</span>
+          </div>
+          <div class="widget-frame">
+            <img src="torbob-irl-2.png" alt="TorBob photographic record" class="widget-img" loading="lazy">
+          </div>
+        </article>
+
+        <!-- Widget 3 -->
+        <article class="photo-widget" data-zoom-img="torbob-irl-3.png">
+          <div class="widget-topbar">
+            <span class="widget-tag">WIDGET 03</span>
+            <span class="widget-zoom-action">Inspect ↗</span>
+          </div>
+          <div class="widget-frame">
+            <img src="torbob-irl-3.png" alt="TorBob photographic record" class="widget-img" loading="lazy">
+          </div>
+        </article>
+
+        <!-- Widget 4 -->
+        <article class="photo-widget" data-zoom-img="torbob-irl-4.png">
+          <div class="widget-topbar">
+            <span class="widget-tag">WIDGET 04</span>
+            <span class="widget-zoom-action">Inspect ↗</span>
+          </div>
+          <div class="widget-frame">
+            <img src="torbob-irl-4.png" alt="TorBob photographic record" class="widget-img" loading="lazy">
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer class="evidence-footer">
-      <div class="footer-gallery">
-        <div class="footer-photo-card" data-zoom-img="torbob-irl-1.png">
-          <img src="torbob-irl-1.png" alt="TorBob evidence photograph" class="footer-photo" loading="lazy">
-        </div>
-        <div class="footer-photo-card" data-zoom-img="torbob-irl-2.png">
-          <img src="torbob-irl-2.png" alt="TorBob evidence photograph" class="footer-photo" loading="lazy">
-        </div>
-        <div class="footer-photo-card" data-zoom-img="torbob-irl-3.png">
-          <img src="torbob-irl-3.png" alt="TorBob evidence photograph" class="footer-photo" loading="lazy">
-        </div>
-        <div class="footer-photo-card" data-zoom-img="torbob-irl-4.png">
-          <img src="torbob-irl-4.png" alt="TorBob evidence photograph" class="footer-photo" loading="lazy">
-        </div>
-      </div>
-
-      <div class="share-actions-row">
-        <button class="btn-primary" id="btn-copy-link">
-          📋 COPY EVIDENCE LINK
-        </button>
-        <button class="btn-secondary" id="btn-share-twitter">
-          🐦 SHARE ON X / TWITTER
-        </button>
-      </div>
-
       <p class="footer-credits">
         Evidence Dossier Archive &bull; Domain: <a href="https://torbob69xray.my.id" target="_blank" rel="noopener">torbob69xray.my.id</a>
       </p>
       <p class="footer-source">
-        Video footage source: <a href="https://youtu.be/JOnVNz0psGA" target="_blank" rel="noopener">YouTube: JOnVNz0psGA</a>
+        Video footage source: <a href="https://youtu.be/JOnVNz0psGA" target="_blank" rel="noopener">YouTube</a>
       </p>
     </footer>
 
   </main>
 
-  <!-- FULLSCREEN IMAGE LIGHTBOX MODAL -->
+  <!-- FULLSCREEN IMAGE LIGHTBOX MODAL WITH ARROW NAVIGATION -->
   <div class="lightbox-modal" id="lightbox-modal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
     <div class="lightbox-container">
       <button class="lightbox-close" id="lightbox-close" aria-label="Close image preview">&times;</button>
+      <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous image">&#10094;</button>
       <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" alt="Enlarged Evidence Image" id="lightbox-img" class="lightbox-img">
+      <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next image">&#10095;</button>
       <div id="lightbox-title" class="lightbox-title"></div>
     </div>
   </div>

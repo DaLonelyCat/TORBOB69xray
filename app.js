@@ -1,7 +1,7 @@
 /**
  * TORBOB69 CHEATING EVIDENCE CONTROLLER
  * =====================================
- * Handles YouTube IFrame API embedding, Lightbox inspection, and sharing.
+ * Handles YouTube IFrame API embedding and Fullscreen Lightbox with arrow navigation.
  */
 
 // Global YouTube Player instance
@@ -29,23 +29,48 @@ window.onYouTubeIframeAPIReady = function() {
 };
 
 /**
- * Fullscreen Image Zoom Lightbox
+ * Fullscreen Image Zoom Lightbox with Gallery Navigation
  */
+let currentZoomIndex = 0;
+let zoomableElements = [];
+
 function setupImageLightbox() {
   const modal = document.getElementById('lightbox-modal');
   const modalImg = document.getElementById('lightbox-img');
   const modalTitle = document.getElementById('lightbox-title');
   const closeBtn = document.getElementById('lightbox-close');
+  const prevBtn = document.getElementById('lightbox-prev');
+  const nextBtn = document.getElementById('lightbox-next');
   const backdrop = document.getElementById('lightbox-backdrop');
 
   if (!modal || !modalImg) return;
 
-  function openLightbox(src, title) {
+  zoomableElements = Array.from(document.querySelectorAll('[data-zoom-img]'));
+
+  function showImageAtIndex(index) {
+    if (zoomableElements.length === 0) return;
+    if (index < 0) index = zoomableElements.length - 1;
+    if (index >= zoomableElements.length) index = 0;
+    currentZoomIndex = index;
+
+    const el = zoomableElements[currentZoomIndex];
+    const src = el.getAttribute('data-zoom-img');
+    const title = el.getAttribute('data-zoom-title');
+
     modalImg.src = src;
     if (modalTitle) {
-      modalTitle.textContent = title || '';
-      modalTitle.style.display = title ? 'block' : 'none';
+      if (title) {
+        modalTitle.textContent = title;
+        modalTitle.style.display = 'block';
+      } else {
+        modalTitle.textContent = '';
+        modalTitle.style.display = 'none';
+      }
     }
+  }
+
+  function openLightbox(index) {
+    showImageAtIndex(index);
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -57,25 +82,34 @@ function setupImageLightbox() {
     document.body.style.overflow = '';
   }
 
-  // Attach click listener to all zoomable elements
-  const zoomables = document.querySelectorAll('[data-zoom-img]');
-  zoomables.forEach(item => {
-    item.addEventListener('click', () => {
-      const src = item.getAttribute('data-zoom-img');
-      const title = item.getAttribute('data-zoom-title');
-      if (src) {
-        openLightbox(src, title);
-      }
+  zoomableElements.forEach((el, idx) => {
+    el.addEventListener('click', () => {
+      openLightbox(idx);
     });
   });
 
   if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
   if (backdrop) backdrop.addEventListener('click', closeLightbox);
 
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showImageAtIndex(currentZoomIndex - 1);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showImageAtIndex(currentZoomIndex + 1);
+    });
+  }
+
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-      closeLightbox();
-    }
+    if (!modal.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showImageAtIndex(currentZoomIndex - 1);
+    if (e.key === 'ArrowRight') showImageAtIndex(currentZoomIndex + 1);
   });
 }
 
@@ -99,39 +133,7 @@ function showToast(message) {
   }, 3200);
 }
 
-/**
- * Share & Copy Link functions
- */
-function copySiteLink() {
-  const domainUrl = 'https://torbob69xray.my.id';
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(domainUrl).then(() => {
-      showToast('📋 EVIDENCE LINK COPIED TO CLIPBOARD!');
-    }).catch(() => {
-      showToast('📋 EVIDENCE URL: ' + domainUrl);
-    });
-  } else {
-    showToast('📋 EVIDENCE URL: ' + domainUrl);
-  }
-}
-
-function shareTwitter() {
-  const text = encodeURIComponent('TORBOB69 CHEATING EVIDENCE: Video proof, server logs, and 63 God Apple inventory seizure.');
-  const url = encodeURIComponent('https://torbob69xray.my.id');
-  window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
-}
-
 // App Initialization
 document.addEventListener('DOMContentLoaded', () => {
   setupImageLightbox();
-
-  const copyBtn = document.getElementById('btn-copy-link');
-  if (copyBtn) {
-    copyBtn.addEventListener('click', copySiteLink);
-  }
-
-  const twitterBtn = document.getElementById('btn-share-twitter');
-  if (twitterBtn) {
-    twitterBtn.addEventListener('click', shareTwitter);
-  }
 });
